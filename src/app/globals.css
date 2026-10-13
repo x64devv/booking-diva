@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-barlow-condensed), var(--font-barlow), ui-sans-serif, sans-serif;
+
+  --color-ink-950: #050c2b;
+  --color-ink-900: #0a1640;
+  --color-ink-800: #102058;
+  --color-ink-700: #18307e;
+  --color-volt-500: #2f55d4;   /* chart: paid */
+  --color-volt-400: #4f74ff;
+  --color-volt-300: #8aa6ff;
+  --color-ember-600: #d4500a;
+  --color-ember-500: #e8590c;  /* chart: reserved / accent */
+  --color-ember-400: #ff7a2f;
+  --color-paper: #f6f7fb;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background: var(--color-paper);
+  color: #0f172a;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Flyer-style diagonal light streak used in the hero */
+.hero-bg {
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, rgb(79 116 255 / 0.55), transparent 60%),
+    linear-gradient(115deg, transparent 55%, rgb(138 166 255 / 0.18) 55.2%, transparent 62%),
+    linear-gradient(115deg, transparent 63%, rgb(232 89 12 / 0.35) 63.15%, transparent 63.5%),
+    linear-gradient(180deg, var(--color-ink-900), var(--color-ink-950));
+}
+
+@utility field {
+  @apply block w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-[15px] text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-volt-500 focus:ring-4 focus:ring-volt-500/15;
+}
+
+@utility label {
+  @apply mb-1.5 block text-sm font-semibold text-slate-700;
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60;
+}
+@utility btn-primary {
+  @apply btn bg-ember-500 text-white shadow-sm hover:bg-ember-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember-500;
+}
+@utility btn-dark {
+  @apply btn bg-ink-800 text-white hover:bg-ink-700;
+}
+@utility btn-ghost {
+  @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50;
+}
+@utility btn-danger {
+  @apply btn border border-red-200 bg-white text-red-700 hover:bg-red-50;
+}
+
+@utility card {
+  @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}
